@@ -1,0 +1,7 @@
+<div class="list-group scrollable-menu" id="researches">
+  <a *ngFor="let doc of doctors" 
+      (click)="loadTimeline(doc)"
+      [class.active]="doc === selectedDoc"
+  href="#" class="research list-group-item" data-pk="" data-prep="" data-cost="">
+  {{doc.first_name}} {{doc.name}}</a>
+</div>

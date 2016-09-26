@@ -1,0 +1,26 @@
+<div id="clndr">
+      <div class="month">
+        <ul>
+          <li class="prev" id="cal_prv_btn" (click)="prev()">❮</li>
+          <li class="next" id="cal_nxt_btn" (click)="next()">❯</li>
+          <li style="text-align:center">{{syear}}</li>
+          <li style="text-align:center">{{sdate}}</li>                    
+        </ul>
+      </div>
+      <ul class="weekdays">
+        <li>Пн</li>
+        <li>Вт</li>
+        <li>Ср</li>
+        <li>Чт</li>
+        <li>Пт</li>
+        <li>Сб</li>
+        <li>Вс</li>
+      </ul>
+      <ul class="days">
+        <li *ngFor="let day of Days" ><div class="day" 
+            [class.disabled]="day.enabled == false"
+            [class.today]="day.num == today"
+            [class.active]="day == selectedDay"
+            (click)="selectDay(day)">{{day.num}}</div></li>
+      </ul>
+</div>

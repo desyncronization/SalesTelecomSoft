@@ -1,0 +1,6 @@
+<div class="list-group scrollable-menu" id="researches">
+  <a *ngFor="let res of researches"
+   (click)="onSelect(res)"
+   [class.active]="res === selectedRes"
+   href="#" class="research list-group-item" data-pk="" data-prep="" data-cost="">{{res.name}}</a>
+</div> <!--{{res.pk}}{{res.prep}}{{res.cost}}-->
