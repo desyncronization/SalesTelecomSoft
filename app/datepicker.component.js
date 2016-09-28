@@ -22,6 +22,7 @@ var DatepickComponent = (function () {
         this.date = new Date;
         this.syear = this.date.getFullYear();
         this.sdate = this.date.getDate().toString() + ', ' + this.months[this.date.getMonth()];
+        this.currentMonth = this.date.getMonth();
         this.createCalendar(this.date.getFullYear(), this.date.getMonth());
     };
     DatepickComponent.prototype.createCalendar = function (year, month) {
@@ -29,6 +30,8 @@ var DatepickComponent = (function () {
         var mon = month;
         var d = new Date(year, mon);
         this.Days = [];
+        this.syear = this.date.getFullYear();
+        this.sdate = this.date.getDate().toString() + ', ' + this.months[this.date.getMonth()];
         for (var i = 0; i < this.getDay(d); i++) {
             this.Days.push({ num: ' ', enabled: true });
         }
@@ -76,8 +79,10 @@ var DatepickComponent = (function () {
         this.createCalendar(this.date.getFullYear(), this.date.getMonth());
     };
     DatepickComponent.prototype.prev = function () {
-        this.date.setMonth(this.date.getMonth() - 1);
-        this.createCalendar(this.date.getFullYear(), this.date.getMonth());
+        if (this.date.getMonth() - 1 >= this.currentMonth) {
+            this.date.setMonth(this.date.getMonth() - 1);
+            this.createCalendar(this.date.getFullYear(), this.date.getMonth());
+        }
     };
     __decorate([
         core_1.Output(), 
