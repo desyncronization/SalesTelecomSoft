@@ -17,10 +17,11 @@
         <li>Вс</li>
       </ul>
       <ul class="days">
-        <li *ngFor="let day of Days" ><div class="day" 
+        <div class="day" 
+             *ngFor="let day of Days" 
             [class.disabled]="day.enabled == false"
             [class.today]="day.num == today"
             [class.selected]="day == selectedDay"
-            (click)="selectDay(day)">{{day.num}}</div></li>
+            (click)="selectDay(day)">{{day.num}}</div>
       </ul>
 </div>

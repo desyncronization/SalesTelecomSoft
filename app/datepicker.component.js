@@ -28,8 +28,9 @@ var DatepickComponent = (function () {
         var enabled = true;
         var mon = month;
         var d = new Date(year, mon);
+        this.Days = [];
         for (var i = 0; i < this.getDay(d); i++) {
-            this.Days.push({ num: '', enabled: true });
+            this.Days.push({ num: ' ', enabled: true });
         }
         // ячейки календаря с датами
         while (d.getMonth() == mon) {
@@ -54,10 +55,9 @@ var DatepickComponent = (function () {
         // добить пустыми ячейками, если нужно
         if (this.getDay(d) != 0) {
             for (var i = this.getDay(d); i < 7; i++) {
-                this.Days.push({ num: '', enabled: true });
+                this.Days.push({ num: ' ', enabled: true });
             }
         }
-        console.log(this.Days);
     };
     DatepickComponent.prototype.getDay = function (date) {
         var day = date.getDay();
@@ -72,8 +72,12 @@ var DatepickComponent = (function () {
         }
     };
     DatepickComponent.prototype.next = function () {
+        this.date.setMonth(this.date.getMonth() + 1);
+        this.createCalendar(this.date.getFullYear(), this.date.getMonth());
     };
     DatepickComponent.prototype.prev = function () {
+        this.date.setMonth(this.date.getMonth() - 1);
+        this.createCalendar(this.date.getFullYear(), this.date.getMonth());
     };
     __decorate([
         core_1.Output(), 

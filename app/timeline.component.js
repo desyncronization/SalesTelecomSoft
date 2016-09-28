@@ -14,7 +14,7 @@ var TimelineComponent = (function () {
     function TimelineComponent() {
     }
     TimelineComponent.prototype.ngOnInit = function () {
-        this.selDay = { num: '1', enabled: true };
+        //this.selDay = {num:'1',enabled:true} as Day;
     };
     __decorate([
         core_1.Input(), 

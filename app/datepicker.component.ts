@@ -29,8 +29,9 @@ export class DatepickComponent implements OnInit{
       var enabled:boolean = true;
       var mon = month; 
       var d = new Date(year, mon);
+      this.Days = [];
       for (var i = 0; i < this.getDay(d); i++) {
-        this.Days.push({num:'',enabled:true} as Day);
+        this.Days.push({num:' ',enabled:true} as Day);
       }
       // ячейки календаря с датами
       while (d.getMonth() == mon) {
@@ -56,10 +57,9 @@ export class DatepickComponent implements OnInit{
       // добить пустыми ячейками, если нужно
       if (this.getDay(d) != 0) {
         for (var i = this.getDay(d); i < 7; i++) {
-            this.Days.push({num:'',enabled:true} as Day);
+            this.Days.push({num:' ',enabled:true} as Day);
         }
       }
-      console.log(this.Days);
     }
   getDay(date):number {
     var day = date.getDay();
@@ -73,10 +73,12 @@ export class DatepickComponent implements OnInit{
     }
   }
   next():void{
-
+    this.date.setMonth(this.date.getMonth()+1);
+    this.createCalendar(this.date.getFullYear(),this.date.getMonth());
   }
   prev():void{
-
+    this.date.setMonth(this.date.getMonth()-1);
+    this.createCalendar(this.date.getFullYear(),this.date.getMonth());
   }
 }
 

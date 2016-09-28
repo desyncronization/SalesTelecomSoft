@@ -10,6 +10,6 @@ import { Day }  from './day';
 export class TimelineComponent implements OnInit {
   @Input() selDay:Day;
   ngOnInit():void{
-   this.selDay = {num:'1',enabled:true} as Day;
+   //this.selDay = {num:'1',enabled:true} as Day;
   }
 }
