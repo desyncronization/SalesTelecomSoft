@@ -3,10 +3,13 @@
   <div class="row">
     <div class="col-md-4">    
       <researches></researches>
-      <datepick></datepick>
+      <datepick (onSelectDay)="onSelectDay($event)"></datepick>
     </div>
     <div class="col-md-4">    
       <doctors></doctors>
+    </div>
+    <div class="col-md-4">    
+      <timeline ng-if="selectedDay" [selDay]="selectedDay"></timeline>
     </div>
   </div>
 </div>

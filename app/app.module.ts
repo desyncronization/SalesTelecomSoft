@@ -7,6 +7,7 @@ import { DoctorsService }       from './doctors.service';
 import { ResearchesComponent }  from './researches.component';
 import { ResearchesService }    from './researches.service'; 
 import { DatepickComponent }    from './datepicker.component';
+import { TimelineComponent }    from './timeline.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { DatepickComponent }    from './datepicker.component';
     AppComponent,
     DoctorsComponent,
     ResearchesComponent,
-    DatepickComponent
+    DatepickComponent,
+    TimelineComponent
   ],
   bootstrap: [ AppComponent ]
 })

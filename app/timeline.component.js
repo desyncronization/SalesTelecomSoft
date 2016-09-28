@@ -9,22 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'SalesTelecomSoft';
-        this.selectedDay = { num: '', enabled: false };
+var day_1 = require('./day');
+var TimelineComponent = (function () {
+    function TimelineComponent() {
     }
-    AppComponent.prototype.onSelectDay = function (day) {
-        this.selectedDay = day;
+    TimelineComponent.prototype.ngOnInit = function () {
+        this.selDay = { num: '1', enabled: true };
     };
-    AppComponent = __decorate([
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', day_1.Day)
+    ], TimelineComponent.prototype, "selDay", void 0);
+    TimelineComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            templateUrl: 'app/app.component.html'
+            selector: 'timeline',
+            template: "\n    <h2 ng-if=\"selDay\">{{selDay.num}}<h2>\n  "
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], TimelineComponent);
+    return TimelineComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.TimelineComponent = TimelineComponent;
+//# sourceMappingURL=timeline.component.js.map

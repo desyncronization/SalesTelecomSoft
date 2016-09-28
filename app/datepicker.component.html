@@ -20,7 +20,7 @@
         <li *ngFor="let day of Days" ><div class="day" 
             [class.disabled]="day.enabled == false"
             [class.today]="day.num == today"
-            [class.active]="day == selectedDay"
+            [class.selected]="day == selectedDay"
             (click)="selectDay(day)">{{day.num}}</div></li>
       </ul>
 </div>

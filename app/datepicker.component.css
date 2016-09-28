@@ -47,9 +47,45 @@
     color: #666;
     text-align: center;
 }
-
+/* Days (1-31) */
 .days {
-    margin-top: 5px; 
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+}
+
+.days li {
+    cursor: pointer;
+    height:15px;
+    padding: 5px !important;
+    list-style-type: none;
+    display: inline-block;
+    width: 13.6%;
+    text-align: center;
+    margin-bottom: 6px;
+    font-size:12px;
+    color:#777;
+}
+
+/* Highlight the "current" day */
+.days li .selected {
+    /*padding: 5px;*/
+    background: #428bca;
+    color: white !important
+}
+.days li .disabled {
+    /*padding: 5px;*/
+    background: #ddd;
+}
+.days li .today {
+    /*padding: 5px;*/
+    border: 1px #428bca solid;
+}
+.day{
+  width: 100%;
+}
+
+/*.days {
     padding: 5px 20px;
     background: #eee;
     margin-bottom: 0;
@@ -83,13 +119,11 @@
 
 .day li div {
     width: 100%;
-    padding-bottom: 5px;
-    padding-top: 5px;
 }
 .days li .today {
-    padding-bottom: 5px;
-    padding-top: 5px;
-    cursor:default;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    cursor:pointer;
     color: #999 ;
     border: #428bca solid 1px;
 }

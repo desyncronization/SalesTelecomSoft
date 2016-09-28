@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
-export class Day{
-  num:any;
-  enabled:boolean;
-}
+import { Day } from './day';
 
 @Component({
   selector: 'datepick',
@@ -12,6 +9,7 @@ export class Day{
 })
 export class DatepickComponent implements OnInit{
 
+  @Output() onSelectDay = new EventEmitter<Day>();
   selectedDay:Day;
   months: string[] = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
   date: Date = new Date;
@@ -22,7 +20,6 @@ export class DatepickComponent implements OnInit{
   today:string = this.date.getDate().toString();
 
   ngOnInit():void {
-    console.log(this.Days);
     this.date = new Date;
     this.syear = this.date.getFullYear()
     this.sdate = this.date.getDate().toString()+', '+this.months[this.date.getMonth()];
@@ -32,7 +29,6 @@ export class DatepickComponent implements OnInit{
       var enabled:boolean = true;
       var mon = month; 
       var d = new Date(year, mon);
-      console.log(this.getDay(d));
       for (var i = 0; i < this.getDay(d); i++) {
         this.Days.push({num:'',enabled:true} as Day);
       }
@@ -73,6 +69,7 @@ export class DatepickComponent implements OnInit{
   selectDay(day):void{
     if(day.enabled){
       this.selectedDay = day;
+      this.onSelectDay.emit(day);
     }
   }
   next():void{

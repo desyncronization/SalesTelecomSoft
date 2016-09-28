@@ -9,14 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var Day = (function () {
-    function Day() {
-    }
-    return Day;
-}());
-exports.Day = Day;
 var DatepickComponent = (function () {
     function DatepickComponent() {
+        this.onSelectDay = new core_1.EventEmitter();
         this.months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
         this.date = new Date;
         this.Days = [];
@@ -24,7 +19,6 @@ var DatepickComponent = (function () {
         this.today = this.date.getDate().toString();
     }
     DatepickComponent.prototype.ngOnInit = function () {
-        console.log(this.Days);
         this.date = new Date;
         this.syear = this.date.getFullYear();
         this.sdate = this.date.getDate().toString() + ', ' + this.months[this.date.getMonth()];
@@ -34,7 +28,6 @@ var DatepickComponent = (function () {
         var enabled = true;
         var mon = month;
         var d = new Date(year, mon);
-        console.log(this.getDay(d));
         for (var i = 0; i < this.getDay(d); i++) {
             this.Days.push({ num: '', enabled: true });
         }
@@ -75,12 +68,17 @@ var DatepickComponent = (function () {
     DatepickComponent.prototype.selectDay = function (day) {
         if (day.enabled) {
             this.selectedDay = day;
+            this.onSelectDay.emit(day);
         }
     };
     DatepickComponent.prototype.next = function () {
     };
     DatepickComponent.prototype.prev = function () {
     };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], DatepickComponent.prototype, "onSelectDay", void 0);
     DatepickComponent = __decorate([
         core_1.Component({
             selector: 'datepick',

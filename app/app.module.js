@@ -15,6 +15,7 @@ var app_component_1 = require('./app.component');
 var doctors_component_1 = require('./doctors.component');
 var researches_component_1 = require('./researches.component');
 var datepicker_component_1 = require('./datepicker.component');
+var timeline_component_1 = require('./timeline.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -28,7 +29,8 @@ var AppModule = (function () {
                 app_component_1.AppComponent,
                 doctors_component_1.DoctorsComponent,
                 researches_component_1.ResearchesComponent,
-                datepicker_component_1.DatepickComponent
+                datepicker_component_1.DatepickComponent,
+                timeline_component_1.TimelineComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 
