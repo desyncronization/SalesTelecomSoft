@@ -23,6 +23,7 @@ var DatepickComponent = (function () {
         this.syear = this.date.getFullYear();
         this.sdate = this.date.getDate().toString() + ', ' + this.months[this.date.getMonth()];
         this.currentMonth = this.date.getMonth();
+        this.currentYear = this.date.getFullYear();
         this.createCalendar(this.date.getFullYear(), this.date.getMonth());
     };
     DatepickComponent.prototype.createCalendar = function (year, month) {
@@ -44,15 +45,6 @@ var DatepickComponent = (function () {
                 }
             });
             this.Days.push({ num: d.getDate(), enabled: enabled });
-            /*for (var i = 0; i < this.disabledDays.length; i++) {
-              if(d.getDate() == this.disabledDays[i]){
-                this.Days.push({num:d.getDate(),enabled:false} as Day);
-                break;
-              }else{
-                this.Days.push({num:d.getDate(),enabled:true} as Day);
-                break;
-              }
-            }*/
             d.setDate(d.getDate() + 1);
         }
         // добить пустыми ячейками, если нужно
@@ -69,7 +61,7 @@ var DatepickComponent = (function () {
         return day - 1;
     };
     DatepickComponent.prototype.selectDay = function (day) {
-        if (day.enabled) {
+        if (day.enabled && day.num != ' ') {
             this.selectedDay = day;
             this.onSelectDay.emit(day);
         }
@@ -79,7 +71,8 @@ var DatepickComponent = (function () {
         this.createCalendar(this.date.getFullYear(), this.date.getMonth());
     };
     DatepickComponent.prototype.prev = function () {
-        if (this.date.getMonth() - 1 >= this.currentMonth) {
+        if ((this.date.getMonth() - 1 >= this.currentMonth && this.date.getFullYear() == this.currentYear)
+            || (this.currentYear < this.date.getFullYear())) {
             this.date.setMonth(this.date.getMonth() - 1);
             this.createCalendar(this.date.getFullYear(), this.date.getMonth());
         }

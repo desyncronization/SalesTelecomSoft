@@ -1,4 +1,4 @@
-import { Component,OnInit }  from '@angular/core';
+import { Component,OnInit,EventEmitter,Output }  from '@angular/core';
 
 import { ResearchesService }  from './researches.service';
 import { Research }  from './research';
@@ -11,7 +11,7 @@ import { Research }  from './research';
 export class ResearchesComponent implements OnInit {
   researches: Research[] = [];
   selectedRes: Research;
-
+  @Output() onSelectRes = new EventEmitter<Research>()
   constructor(private resService: ResearchesService) { }
 
 
@@ -23,5 +23,6 @@ export class ResearchesComponent implements OnInit {
   }
   onSelect(res):void {
     this.selectedRes = res;
+    this.onSelectRes.emit(res);
   }
 }

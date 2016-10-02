@@ -13,9 +13,18 @@ var AppComponent = (function () {
     function AppComponent() {
         this.title = 'SalesTelecomSoft';
         this.selectedDay = { num: '', enabled: false };
+        this.selectedDoc = { pk: 1, first_name: '', name: '', startage: 1, duration: 11, region: '' };
+        this.selectedRes = { pk: 1, name: '', cost: '', prep: '' };
     }
     AppComponent.prototype.onSelectDay = function (day) {
         this.selectedDay = day;
+    };
+    AppComponent.prototype.onSelectDoc = function (doc) {
+        this.selectedDoc = doc;
+    };
+    AppComponent.prototype.onSelectRes = function (res) {
+        this.selectedRes = res;
+        console.log(res);
     };
     AppComponent = __decorate([
         core_1.Component({

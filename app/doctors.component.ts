@@ -1,4 +1,4 @@
-import { Component,OnInit }  from '@angular/core';
+import { Component,OnInit,EventEmitter,Output }  from '@angular/core';
 
 import { DoctorsService}  from './doctors.service';
 import { Doctor } from './doctor';
@@ -11,7 +11,8 @@ import { Doctor } from './doctor';
 export class DoctorsComponent implements OnInit {
 
   doctors: Doctor[] = [];
-  selectedDoc: Doctor;
+  selectedDoc:Doctor;
+  @Output() onSelectDoc = new EventEmitter<Doctor>();
 
   constructor(private docService: DoctorsService) { }
 
@@ -21,7 +22,8 @@ export class DoctorsComponent implements OnInit {
       .then(doctors=>this.selectedDoc = doctors[0]);
   }
 
-  loadTimeline(doc: Doctor): void {
+  selectDoc(doc: Doctor): void {
+    this.onSelectDoc.emit(doc);
     this.selectedDoc = doc;
   }
 }

@@ -2,11 +2,16 @@
 <h1>{{title}}</h1>
   <div class="row">
     <div class="col-md-4">    
-      <researches></researches>
+      <researches (onSelectRes)="onSelectRes($event)"></researches>
       <datepick (onSelectDay)="onSelectDay($event)"></datepick>
     </div>
     <div class="col-md-4">    
-      <doctors></doctors>
+      <doctors *ngIf="selectedDay.enabled"
+      (onSelectDoc)="onSelectDoc($event)"></doctors>
+      <info-form [day]="selectedDay"
+                 [doc]="selectedDoc"
+                 [res]="selectedRes"
+      ></info-form>
     </div>
     <div class="col-md-4">    
       <timeline ng-if="selectedDay" [selDay]="selectedDay"></timeline>

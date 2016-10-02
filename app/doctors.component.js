@@ -14,6 +14,7 @@ var DoctorsComponent = (function () {
     function DoctorsComponent(docService) {
         this.docService = docService;
         this.doctors = [];
+        this.onSelectDoc = new core_1.EventEmitter();
     }
     DoctorsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -21,9 +22,14 @@ var DoctorsComponent = (function () {
             .then(function (doctors) { return _this.doctors = doctors; })
             .then(function (doctors) { return _this.selectedDoc = doctors[0]; });
     };
-    DoctorsComponent.prototype.loadTimeline = function (doc) {
+    DoctorsComponent.prototype.selectDoc = function (doc) {
+        this.onSelectDoc.emit(doc);
         this.selectedDoc = doc;
     };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], DoctorsComponent.prototype, "onSelectDoc", void 0);
     DoctorsComponent = __decorate([
         core_1.Component({
             selector: 'doctors',

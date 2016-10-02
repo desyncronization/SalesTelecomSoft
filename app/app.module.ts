@@ -8,6 +8,7 @@ import { ResearchesComponent }  from './researches.component';
 import { ResearchesService }    from './researches.service'; 
 import { DatepickComponent }    from './datepicker.component';
 import { TimelineComponent }    from './timeline.component';
+import { InfoformComponent }    from './infoform.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { TimelineComponent }    from './timeline.component';
     DoctorsComponent,
     ResearchesComponent,
     DatepickComponent,
-    TimelineComponent
+    TimelineComponent,
+    InfoformComponent
   ],
   bootstrap: [ AppComponent ]
 })

@@ -14,6 +14,7 @@ var ResearchesComponent = (function () {
     function ResearchesComponent(resService) {
         this.resService = resService;
         this.researches = [];
+        this.onSelectRes = new core_1.EventEmitter();
     }
     ResearchesComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -23,7 +24,12 @@ var ResearchesComponent = (function () {
     };
     ResearchesComponent.prototype.onSelect = function (res) {
         this.selectedRes = res;
+        this.onSelectRes.emit(res);
     };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], ResearchesComponent.prototype, "onSelectRes", void 0);
     ResearchesComponent = __decorate([
         core_1.Component({
             selector: 'researches',

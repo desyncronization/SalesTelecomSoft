@@ -19,12 +19,14 @@ export class DatepickComponent implements OnInit{
   disabledDays: number[] = [7,9,22];
   today:string = this.date.getDate().toString();
   currentMonth:number;
+  currentYear:number;
 
   ngOnInit():void {
     this.date = new Date;
     this.syear = this.date.getFullYear()
     this.sdate = this.date.getDate().toString()+', '+this.months[this.date.getMonth()];
     this.currentMonth = this.date.getMonth();
+    this.currentYear = this.date.getFullYear();
     this.createCalendar(this.date.getFullYear(),this.date.getMonth());
 
   }
@@ -48,15 +50,6 @@ export class DatepickComponent implements OnInit{
             }
         });   
         this.Days.push({num:d.getDate(),enabled:enabled} as Day);
-        /*for (var i = 0; i < this.disabledDays.length; i++) {
-          if(d.getDate() == this.disabledDays[i]){
-            this.Days.push({num:d.getDate(),enabled:false} as Day);
-            break;
-          }else{
-            this.Days.push({num:d.getDate(),enabled:true} as Day);
-            break;
-          }
-        }*/
         d.setDate(d.getDate() + 1);
       }
       // добить пустыми ячейками, если нужно
@@ -72,7 +65,7 @@ export class DatepickComponent implements OnInit{
     return day - 1;
   }
   selectDay(day):void{
-    if(day.enabled){
+    if(day.enabled && day.num != ' '){
       this.selectedDay = day;
       this.onSelectDay.emit(day);
     }
@@ -82,7 +75,9 @@ export class DatepickComponent implements OnInit{
     this.createCalendar(this.date.getFullYear(),this.date.getMonth());
   }
   prev():void{
-    if( this.date.getMonth()-1 >= this.currentMonth ) {
+    if( (this.date.getMonth()-1 >= this.currentMonth && this.date.getFullYear() == this.currentYear)
+     || (this.currentYear < this.date.getFullYear())
+       ) {
       this.date.setMonth(this.date.getMonth()-1);
       this.createCalendar(this.date.getFullYear(),this.date.getMonth());
     }
