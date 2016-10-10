@@ -20,15 +20,15 @@ export class DatepickComponent implements OnInit{
   today:string = this.date.getDate().toString();
   currentMonth:number;
   currentYear:number;
+  isMonthCurrent:boolean = true;
 
   ngOnInit():void {
     this.date = new Date;
     this.syear = this.date.getFullYear()
-    this.sdate = this.date.getDate().toString()+', '+this.months[this.date.getMonth()];
+    this.sdate = this.months[this.date.getMonth()];
     this.currentMonth = this.date.getMonth();
     this.currentYear = this.date.getFullYear();
-    this.createCalendar(this.date.getFullYear(),this.date.getMonth());
-
+    this.createCalendar( this.date.getFullYear(),this.date.getMonth() );
   }
   createCalendar(year, month):void {
       var enabled:boolean = true;
@@ -36,7 +36,7 @@ export class DatepickComponent implements OnInit{
       var d = new Date(year, mon);
       this.Days = [];
       this.syear = this.date.getFullYear()
-      this.sdate = this.date.getDate().toString()+', '+this.months[this.date.getMonth()];
+      this.sdate = this.months[this.date.getMonth()];
       for (var i = 0; i < this.getDay(d); i++) {
         this.Days.push({num:' ',enabled:true} as Day);
       }
@@ -71,16 +71,33 @@ export class DatepickComponent implements OnInit{
     }
   }
   next():void{
+    if(this.date.getMonth()+1==this.currentMonth) {
+      this.isMonthCurrent=true
+    }else{
+      this.isMonthCurrent=false
+    }
     this.date.setMonth(this.date.getMonth()+1);
     this.createCalendar(this.date.getFullYear(),this.date.getMonth());
+    console.log(this.currentMonth);
+    console.log(this.date.getMonth());
+    console.log(this.isMonthCurrent);
+    console.log('-');
   }
   prev():void{
     if( (this.date.getMonth()-1 >= this.currentMonth && this.date.getFullYear() == this.currentYear)
      || (this.currentYear < this.date.getFullYear())
        ) {
+      if(this.date.getMonth()-1==this.currentMonth) {
+        this.isMonthCurrent=true
+      }else{
+        this.isMonthCurrent=false
+      }
       this.date.setMonth(this.date.getMonth()-1);
       this.createCalendar(this.date.getFullYear(),this.date.getMonth());
     }
+    console.log(this.currentMonth);
+    console.log(this.date.getMonth());console.log(this.isMonthCurrent);
+    console.log('-');
   }
 }
 

@@ -13,7 +13,7 @@ import { InfoformComponent }    from './infoform.component';
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule//,    Ng2PopupModule
   ],
   declarations: [
     AppComponent,
@@ -21,7 +21,7 @@ import { InfoformComponent }    from './infoform.component';
     ResearchesComponent,
     DatepickComponent,
     TimelineComponent,
-    InfoformComponent
+    InfoformComponent,
   ],
   bootstrap: [ AppComponent ]
 })

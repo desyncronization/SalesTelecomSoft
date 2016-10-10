@@ -20,7 +20,7 @@
         <div class="day" 
              *ngFor="let day of Days" 
             [class.disabled]="day.enabled == false"
-            [class.today]="day.num == today"
+            [class.today]="day.num == today && isMonthCurrent"
             [class.selected]="day == selectedDay"
             (click)="selectDay(day)">{{day.num}}</div>
       </ul>

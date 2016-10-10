@@ -1,0 +1,84 @@
+
+.timetable{
+  width: 100%;
+  border-left: 5px solid #428bca;
+  height: 5px;
+  position:relative;
+  margin-left: 50px;
+  border-top: #aaa solid 1px;
+}
+.timetable:hover{
+  width: 100%;
+  border-left: 5px solid #428bca;
+  height: 5px;
+  position:relative;
+  background-color: #ddd;
+  margin-left: 50px;
+  border-top: #aaa solid 1px;
+  z-index: 50;
+  cursor: pointer;
+}
+.timetable .hour{
+  width: 100%;
+  border-left: 5px solid #428bca;
+  height: 5px;
+  position:relative;
+  margin-left: 50px;
+  border-top: #aaa solid 1px;
+}
+.timetable .hour:hover{
+  width: 100%;
+  border-left: 5px solid #428bca;
+  height: 5px;
+  position:relative;
+  background-color: #ddd;
+  margin-left: 50px;
+  border-top: #aaa solid 1px;
+  z-index: 50;
+  cursor: pointer;
+}
+
+
+
+.timetable-time{
+  position: absolute;
+  left: -50px;
+  color: #aaa;
+}
+.timetable-items{
+  position: relative;
+  width: 95%;
+  margin-left: 60px;
+  background-color: #dfd;
+}
+.timetable-item {
+  position: absolute;
+  z-index: 1000;
+  width: 80%;
+  background-image: linear-gradient(to bottom, #428bca 0, #3278b3 100%);
+  color: #f1f1f1;
+  border-radius: 4px;
+  left: 20px;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 2px;
+}
+.timetable-item-new{
+  position: absolute;
+  z-index: 1000;
+  width: 80%;
+  background-color:#00cc00;
+  color: #f1f1f1;
+  border-radius: 4px;
+  left: 20px;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 2px;
+}
+#timetable-item-new-cross{
+  position: absolute;
+  top:5px;
+  right: 10px;
+  color: #fff;
+  cursor: pointer;
+}

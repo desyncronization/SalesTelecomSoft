@@ -1,0 +1,10 @@
+<div class="scrollable-menu-3">
+  <div *ngFor="let m of  timeline">
+    <div class="timetable"  [class.timetable-hour]="m.hour" (click)="minclick(m)">
+      <span class="time" *ngIf="m.hour">{{m.time}}</span>
+    </div>    
+  </div>
+  <div class="timetable-items">
+    
+  </div>
+</div>

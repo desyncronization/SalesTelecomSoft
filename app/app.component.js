@@ -24,7 +24,6 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.onSelectRes = function (res) {
         this.selectedRes = res;
-        console.log(res);
     };
     AppComponent = __decorate([
         core_1.Component({

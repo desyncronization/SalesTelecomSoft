@@ -10,11 +10,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var day_1 = require('./day');
+//import { Ng2MessagePopupComponent, Ng2PopupComponent} from 'ng2-popup';
 var TimelineComponent = (function () {
     function TimelineComponent() {
+        this.timeline = [];
     }
     TimelineComponent.prototype.ngOnInit = function () {
-        //this.selDay = {num:'1',enabled:true} as Day;
+        this.drawTimeline(8, 45, 22, 15);
+    };
+    TimelineComponent.prototype.ngOnChanges = function (changes) {
+        console.log(changes.selDay);
+    };
+    TimelineComponent.prototype.minclick = function (m) {
+        console.log(m.time);
+    };
+    TimelineComponent.prototype.drawTimeline = function (sh, sm, eh, em) {
+        var h = sh;
+        var m = sm;
+        if (sm >= em) {
+            this.mins = (eh - sh) * 12 + (sm - em) / 5;
+        }
+        else {
+            this.mins = (eh - sh - 1) * 12 + (em - sm) / 5;
+        }
+        for (var i = 0; i < this.mins; i++) {
+            if (h == eh && m == em) {
+                break;
+            }
+            if (m == 0) {
+                this.timeline.push({ time: [h, m], hour: (m == 0) });
+            }
+            else {
+                this.timeline.push({ time: [h, m], hour: (m == 0) });
+            }
+            if (m + 5 == 60) {
+                h++;
+                m = 0;
+            }
+            else
+                m += 5;
+        }
     };
     __decorate([
         core_1.Input(), 
@@ -23,7 +58,8 @@ var TimelineComponent = (function () {
     TimelineComponent = __decorate([
         core_1.Component({
             selector: 'timeline',
-            template: "\n    <h2 ng-if=\"selDay\">{{selDay.num}}<h2>\n  "
+            templateUrl: 'app/timeline.component.html',
+            styleUrls: ['app/timeline.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], TimelineComponent);

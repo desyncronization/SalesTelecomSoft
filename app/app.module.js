@@ -24,7 +24,7 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                forms_1.FormsModule
+                forms_1.FormsModule //,    Ng2PopupModule
             ],
             declarations: [
                 app_component_1.AppComponent,
@@ -32,7 +32,7 @@ var AppModule = (function () {
                 researches_component_1.ResearchesComponent,
                 datepicker_component_1.DatepickComponent,
                 timeline_component_1.TimelineComponent,
-                infoform_component_1.InfoformComponent
+                infoform_component_1.InfoformComponent,
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

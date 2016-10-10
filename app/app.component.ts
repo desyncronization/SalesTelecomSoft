@@ -21,6 +21,5 @@ export class AppComponent {
   }
   onSelectRes(res):void{
     this.selectedRes = res;
-    console.log(res);
   }
 }
